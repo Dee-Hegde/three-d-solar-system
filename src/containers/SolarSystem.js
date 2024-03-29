@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import starsTexure from '../assets/stars.jpg';
@@ -17,13 +17,12 @@ import plutoTexure from '../assets/pluto.jpg';
 // import moonTexture from '../assets/moon.jpg';
 
 const SolarSystem = () => {
-  const canvasRef = useRef();
-
   useEffect(() => {
     const renderer = new THREE.WebGL1Renderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    document.body.appendChild(renderer.domElement);
+    const root = document.getElementById('root');
+    root.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
 
@@ -124,7 +123,7 @@ const SolarSystem = () => {
       mercury.mesh.rotateY(0.004);
       venus.mesh.rotateY(0.002);
       earth.mesh.rotateY(0.02);
-    //   moon.mesh.rotateY(0.01);
+      //   moon.mesh.rotateY(0.01);
       mars.mesh.rotateY(0.018);
       jupiter.mesh.rotateY(0.04);
       saturn.mesh.rotateY(0.038);
@@ -136,8 +135,8 @@ const SolarSystem = () => {
       mercury.obj.rotateY(0.04);
       venus.obj.rotateY(0.015);
       earth.obj.rotateY(0.01);
-    //   moon.obj.rotateY(0.00001);
-    //   moon.obj.rotateX(0.001);
+      //   moon.obj.rotateY(0.00001);
+      //   moon.obj.rotateX(0.001);
       mars.obj.rotateY(0.008);
       jupiter.obj.rotateY(0.002);
       saturn.obj.rotateY(0.0009);
@@ -155,7 +154,6 @@ const SolarSystem = () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
   }, []);
-  return <canvas ref={canvasRef} />;
 };
 
 export default SolarSystem;
